@@ -3453,13 +3453,21 @@ body.light-mode .gh-preview {
 .faq-item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-left: 3px solid transparent;
+  border-radius: 14px;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item:hover {
+  border-color: var(--border2);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .faq-item.open {
   border-color: rgba(56,189,248,0.3);
+  border-left-color: var(--accent);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.1);
 }
 
 .faq-question {
@@ -3503,6 +3511,12 @@ body.light-mode .gh-preview {
   font-family: 'Space Grotesk', sans-serif;
   border-top: 1px solid var(--border);
   padding-top: 16px;
+  animation: faqIn 0.25s  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes faqIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to {opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 600px) {
