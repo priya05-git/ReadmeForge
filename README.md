@@ -5,7 +5,7 @@
 **The fastest way to craft beautiful GitHub READMEs — no Markdown knowledge required.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Made with HTML](https://img.shields.io/badge/Made%20with-HTML%2FJS%2FCSS-orange.svg)](#)
+[![Built with React](https://img.shields.io/badge/Built%20with-React%20%2B%20Vite-blue.svg)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 [ Live Demo](https://makeareadme.netlify.app) · [ Report a Bug](../../issues) · [Request a Feature](../../issues)
@@ -14,20 +14,34 @@
 
 ## Open Source Features
 
-<div align="center">
-  <a href="https://www.nsoc.in">
-    <img src="assets/image.webp" alt="Featured in Nexus Spring of Code" width="50"/>
-  <br/>
-    <sub><b>Featured in Nexus Spring of Code 2026 </b></sub>
-  </a>
-</div>
+<table align="center">
+<tr>
+
+<td align="center" width="300">
+<a href="https://www.nsoc.in">
+<img src="assets/image.webp" alt="Nexus Spring of Code" width="100"/>
+<br /><br />
+<sub><b>Nexus Spring of Code 2026</b></sub>
+</a>
+</td>
+
+<td align="center" width="300">
+<a href="https://gssoc.girlscript.tech/">
+<img src="assets/gssoc.png" alt="GirlScript Summer of Code" width="100"/>
+<br /><br />
+<sub><b>GirlScript Summer of Code 2026</b></sub>
+</a>
+</td>
+
+</tr>
+</table>
 
 
 ---
 
 ##  About
 
-**ReadmeForge** is a browser-based README generator that lets you build polished GitHub repository documentation in minutes — no Markdown expertise needed. Simply fill in your project's sections, toggle the content you want, upload screenshots, and watch a live preview update in real time. When you're done, copy the raw Markdown and paste it straight into your repo.
+**ReadmeForge** is a React-based README generator that lets you build polished GitHub repository documentation in minutes — no Markdown expertise needed. Simply fill in your project's sections, toggle the content you want, upload screenshots, and watch a live preview update in real time. When you're done, copy the raw Markdown and paste it straight into your repo.
 
 ---
 
@@ -40,6 +54,7 @@
 -  **Toggle sections** — Include only what your project needs
 -  **Light & Dark theme support** — Switch between light and dark themes for comfortable viewing
 -  **Zero dependencies** — Pure HTML, CSS, and JavaScript; runs entirely in the browser
+-  **Modern React architecture** — Built using React + Vite for fast development and improved maintainability
 
 ---
 
@@ -55,7 +70,11 @@
 
 ### Prerequisites
 
-No installation required. ReadmeForge runs entirely in the browser.
+Before running locally, ensure you have:
+
+- Node.js (LTS recommended)
+- npm
+- Git
 
 ### Usage
 
@@ -64,20 +83,23 @@ No installation required. ReadmeForge runs entirely in the browser.
    git clone https://github.com/Mohit-368/readmeforge.git
    cd readmeforge
    ```
-
-2. **Open in your browser**
+2. **Install dependencies**
    ```bash
-   open index.html
-   # or simply double-click index.html
+   npm install
    ```
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+4. **Open the local development URL shown in the terminal**
 
-3. **Build your README**
+5. **Build your README**
    - Fill in your project's details section by section
    - Toggle sections on/off as needed
    - Insert screenshots where relevant
    - Watch the live preview update in real time
 
-4. **Export**
+6. **Export**
    - Click **Copy Raw** to copy the generated Markdown
    - Paste it directly into your GitHub repository's `README.md`
 
@@ -85,13 +107,19 @@ No installation required. ReadmeForge runs entirely in the browser.
 
 ## 🗂️ Project Structure
 
+```text
+ReadmeForge/
+├── public/              # Static assets
+├── src/                 # Main React source code
+├── .gitignore           # Git ignored files
+├── eslint.config.js     # ESLint configuration
+├── index.html           # Root HTML template
+├── package.json         # Project dependencies and scripts
+├── package-lock.json    # Locked dependency versions
+├── vite.config.js       # Vite configuration
+└── README.md            # Project documentation
 ```
-readmeforge/
-├── index.html          # Main application entry point
-├── readmeforge.css     # Styling and layout
-├── readmeforge.js      # Core logic and preview generation
-└── README.md           # You are here
-```
+The application follows a React + Vite architecture for faster development, modular components, and improved maintainability.
 
 ---
 
@@ -142,9 +170,7 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 
 ---
 
-
-
-Made with ❤️ using plain HTML, CSS & JavaScript
+Made with ❤️ using React, JavaScript & Vite
 
 ⭐ Star this repo if you found it useful!
 

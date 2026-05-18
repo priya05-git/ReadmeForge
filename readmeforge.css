@@ -1166,6 +1166,25 @@ select option {
   margin-left: 8px;
 }
 
+.preview-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zoom-indicator {
+  min-width: 56px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted2);
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
 .pbtn {
   padding: 8px 10px;
   border-radius: 8px;
@@ -1213,10 +1232,18 @@ select option {
 }
 
 .preview-body {
+  --preview-zoom: 1;
   flex: 1;
-  overflow-y: auto;
+  overflow: auto;
   padding: 24px;
   min-height: 0;
+}
+
+.preview-zoom-wrap {
+  width: calc(100% / var(--preview-zoom));
+  transform: scale(var(--preview-zoom));
+  transform-origin: top left;
+  transition: transform 0.2s ease;
 }
 
 /* GitHub-style rendered preview */
@@ -1229,6 +1256,12 @@ select option {
   font-size: 15px;
   line-height: 1.7;
   box-shadow: var(--gh-preview-shadow);
+}
+
+body.light-mode .gh-preview {
+  background: #ffffff;
+  color: #24292f;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .gh-preview h1 {
@@ -1895,10 +1928,16 @@ select option {
   .preview-actions {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .preview-actions .pbtn {
     flex: 1;
+    justify-content: center;
+  }
+
+  .preview-zoom-controls {
+    width: 100%;
     justify-content: center;
   }
 }
@@ -1960,10 +1999,6 @@ select option {
   padding: 24px;
   background: var(--bg);
 }
-.spinner {
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
 
 @keyframes spin {
   to {
@@ -2004,6 +2039,7 @@ select option {
 
 /* =======================================================
    RESPONSIVENESS (MOBILE & TABLET)
+======================================================= */
 @media (max-width: 1024px) {
   .main {
     flex-direction: column;
@@ -2167,6 +2203,48 @@ select option {
 
 .hidden {
   display: none !important;
+}
+
+.spinner {
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 @media (max-width: 375px) {
@@ -2381,4 +2459,16 @@ select option {
   .scroll-action {
     display: none !important;
   }
+/* URL Validation Styles */
+.input-url-invalid {
+  border: 2px solid #e74c3c !important;
+  outline: none !important;
+}
+
+.url-warning {
+  color: #e74c3c;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  display: block;
+}
 }
