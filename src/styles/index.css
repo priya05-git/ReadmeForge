@@ -3222,8 +3222,18 @@ body.light-mode .gh-preview {
   top: 60px;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  opacity: 0.3;
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0%,
+    var(--accent2) 50%,
+    transparent 100%
+  );
+  opacity: 0.25;
+}
+
+@keyframes stepGlow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(56,189,248,0.3); }
+  50%       { box-shadow: 0 4px 28px rgba(56,189,248,0.6), 0 0 0 6px rgba(56,189,248,0.08); }
 }
 
 .htu-step-num {
@@ -3239,19 +3249,59 @@ body.light-mode .gh-preview {
   font-size: 14px;
   font-weight: 700;
   color: #fff;
-  box-shadow: 0 4px 16px rgba(56,189,248,0.3);
   position: relative;
   z-index: 1;
+  animation: stepGlow 3s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.htu-step:hover .htu-step-num {
+  transform: scale(1.12);
+  animation: none;
+  box-shadow: 0 8px 32px rgba(56,189,248,0.6), 0 0 0 8px rgba(56,189,248,0.1);
 }
 
 .htu-step-content {
   flex: 1;
-  padding-top: 8px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  border-left: 3px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.htu-step-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(56,189,248,0.03), rgba(129,140,248,0.03));
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+
+.htu-step:hover .htu-step-content {
+  border-color: rgba(56,189,248,0.3);
+  border-left-color: var(--accent);
+  transform: translateX(6px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+}
+
+.htu-step:hover .htu-step-content::before {
+  opacity: 1;
 }
 
 .htu-step-icon {
   font-size: 22px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: inline-block;
+  transition: transform 0.2 ease;
+}
+.htu-step:hover .htu-step-icon{
+  transform: scale(1.2) rotate(-5deg);
 }
 
 .htu-step-title {
@@ -3260,6 +3310,10 @@ body.light-mode .gh-preview {
   color: var(--text);
   margin-bottom: 8px;
   letter-spacing: -0.2px;
+  transition: color 0.2s;
+}
+.htu-step:hover  .htu-step-title{
+  color: var(--accent)
 }
 
 .htu-step-desc {
@@ -3271,9 +3325,11 @@ body.light-mode .gh-preview {
 }
 
 @media (max-width: 600px) {
-  .htu-step { gap: 16px; }
+  .htu-step { gap: 14px; padding-bottom: 24px; }
   .htu-step-num { width: 44px; height: 44px; font-size: 12px; }
   .htu-step:not(:last-child)::after { left: 21px; }
+  .htu-steps-content { padding: 14px 16px; }
+  .htu-step:hover  .htu-step-content { transform: translateX(3px); }
   .htu-steps-section { padding: 60px 0; }
 }
 
