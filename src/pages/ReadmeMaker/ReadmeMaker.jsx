@@ -61,6 +61,18 @@ export default function ReadmeMaker() {
       <SEOHead
         title="README Maker — READMEForge"
         description="Generate a professional GitHub README in seconds with live preview, templates, and one-click export."
+        path="/readme-maker"
+        keywords="README maker, GitHub README builder, Markdown generator, README template editor, developer documentation"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'READMEForge README Maker',
+          url: 'https://makeareadme.netlify.app/readme-maker',
+          applicationCategory: 'DeveloperApplication',
+          operatingSystem: 'Web',
+          description: 'Browser-based README maker with live Markdown preview, templates, badges, and export tools.',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        }}
       />
       <Navbar />
       <div id="app-builder" style={{ paddingTop: 64 }}>
